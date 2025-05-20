@@ -4,70 +4,115 @@
  */
 package projectuts;
 
+import java.util.Scanner;
+
 /**
  *
  * @author asus
  */
-
+public class BangunRuang {
     
-    
-public class pajak  {
-    private String vendor;
-    private String tipe;
-    private double harga;
-
-// konstruktor
-//    public pajak(String vendor, String  tipe, double harga) {
-//        this.vendor = vendor;
-//        this.tipe = tipe;
-//        this.harga =harga;
-// }
-    public void setVendor (String vendor) {
-        this.vendor = vendor;
-    }
-    public String getVendor () {
-        return vendor;
-    }
-    public void setTipe (String tipe) {
-        this.tipe = tipe;
-    }
-    public String getTipe () {
-        return tipe;
-    }
-    public void setHarga (double harga) {
-        this.harga = harga;
-    }
-    public double getHarga (){
-        return harga;
-    }
-    
-
-//  menthod menghitung  ppn
-    public double hitungppn() {
-        if (harga > 8000000) {
-            return harga * 0.05;
-        } else if (harga > 4500000 && harga <= 8000000 ) {
-            return harga * 0.02;
-        } else if (harga > 4000000 ) {
-            return harga * 0.01;
-        } else {
-            return 0;
+    // konstruktor rumus hitung voluume dan luas kubus
+    public BangunRuang (int rusuk) {
+        System.out.println("");
+        int luas = 6* rusuk * rusuk;
+        int volume = rusuk * rusuk * rusuk;
+        
+        System.out.println("luas dari kubus adalah");
+        System.out.println(luas);
+        System.out.println("volume dari kubus adalah:"); 
+        System.out.println(volume);
         }
+   
+    //  konstruktor rumus hitung volume dan luas balok
+    public BangunRuang (double panjang, double lebar, double  tinggi){
+        System.out.println("  ");
+        
+        double luas = 2* (panjang * lebar + panjang* tinggi + lebar* tinggi);
+        double volume = panjang * lebar * tinggi;
+        
+        System.out.println("luas dari balok adalah");
+        System.out.println(luas);
+        System.out.println("volume dari ballok adalah:"); 
+        System.out.println(volume);
+        
     }
-
-    // method untuk menghitung  total harga
-
-    public double hitungtotal() {
-        return harga + hitungppn();
+    // konstruktor rumus hitung volume dan luas silinder
+     public BangunRuang (double jarijari, double tinggi2){
+        System.out.println("  ");
+        
+        double luas = 2 * 3.14 * jarijari * (jarijari + tinggi2) ;
+        double volume = 3.14 * jarijari * jarijari * tinggi2;
+        
+        System.out.println("luas dari silinder adalah :");
+        System.out.println(luas);
+        System.out.println("volume dari silinder adalah:"); 
+        System.out.println(volume);
     }
-
-    // method untuk  menmpilkan informasi
-    public void tampilkanInfo() {
-        System.out.println("Vendor: " + this.vendor);
-        System.out.println("Tipe: " + tipe);
-        System.out.println("Harga: " + harga);
-        System.out.println("PPN: " + hitungppn());
-        System.out.println("Total Harga (include ppn): " + hitungtotal());
-        }
-    }    
+    // konstruktor rumus bhitung volume dan luas bola
+    public BangunRuang (double jarijari3){
+        System.out.println("  ");
+        
+        double luas = 4 * 3.14 * jarijari3 * jarijari3;
+        double volume = 4/3 * 3.14 * jarijari3 * jarijari3 * jarijari3;
+        
+        System.out.println("luas dari bola adalah :");
+        System.out.println(luas);
+        System.out.println("volume dari bola adalah :");
+        System.out.println(volume);
+    }
+     
+     
+     
+     
+     //oiverloading
+     
+    public static void main(String[] args) {
+        Scanner  input = new Scanner (System.in);
+         
+        System.out.println("pilih bangun ruang : 1. kubus 2. balok 3. silinder 4. bola ");
+        int pilihan = input.nextInt();
+        switch(pilihan) {
+        
+            case 1 -> {
+        //kubus
+        
+        System.out.println("masukkan panjang rusuk :");
+        int rusuk = input.nextInt();
+        
+        BangunRuang kubus = new BangunRuang(rusuk);
+            }
+            case 2 -> {
+        // prin out balok
+        System.out.println("masukkan panjang :");
+        double panjang = input.nextDouble();
+        System.out.println("masukkan lebar :");
+        double lebar = input.nextDouble();
+        System.out.println("masukkan tinggi :");
+        double tinggi = input.nextDouble();
+ 
+        BangunRuang balok = new BangunRuang(panjang, lebar, tinggi);
+            }
+            case 3 -> {
+        // print out silinder
+        System.out.println("masukan jari jari : ");
+        double jarijari = input.nextDouble();
+        System.out.println("masukan tinggi : ");
+        double tinggi2 = input.nextDouble();
+        
+        BangunRuang silinder = new BangunRuang(jarijari,tinggi2);
+            }
+            case 4 -> {
+        //prin out bola
+        System.out.println("masukkan jari jari :");
+        double jarijari3 = input.nextInt();
+        
+        BangunRuang bola = new BangunRuang(jarijari3);
+        
+            }
+    }
+    
+    }
+    
+}
 
